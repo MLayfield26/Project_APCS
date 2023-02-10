@@ -25,8 +25,7 @@ public class Screen extends PApplet{
         //the veggies are armying
         veggies.add(veggie);
     }
-    public void keyPressed()
-    {
+    public void keyPressed(){
         for (int i=0; i<10; i++)
             createVeggie();
     }
@@ -41,8 +40,7 @@ public class Screen extends PApplet{
 
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args){
         PApplet.main("Screen");
     }
 

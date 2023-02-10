@@ -6,7 +6,7 @@
 import processing.core.*;
 
 
-public class Veggie{
+public class Game{
 //food object (should be draggable)
 
 
