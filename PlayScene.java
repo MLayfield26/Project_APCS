@@ -1,10 +1,6 @@
-
-
 import processing.core.*;
 
-
-
-public class PlayScene implements Scene{
+public class PlayScene implements Scene {
   private int rectX;
   private int rectY;
   private int sizeX;
@@ -15,88 +11,66 @@ public class PlayScene implements Scene{
   private int rectHeight;
   private PImage uncookedTofu;
   private PImage cookedTofu;
-  private boolean cooking;
-    private boolean fried;
+  private PImage backgroundOven;
+  private int cooking;
+  private int fried;
   private PApplet c;
-    public PlayScene(PApplet c){
-     cookedTofu = c.loadImage("cookedTofu.png");
-     uncookedTofu = c.loadImage("uncookedTofu.png");
-        this.c = c;
 
-    }
+  public PlayScene(PApplet c) {
+    cookedTofu = c.loadImage("cookedTofu.png");
+    uncookedTofu = c.loadImage("uncookedTofu.png");
+    backgroundOven = c.loadImage("background.png");
+    this.c = c;
+  }
 
-    public void setup() {
 
-    boolean cooking = false;
-    rectX =250;
+  public void setup() {
+    cooking = 0;
+    rectX = 250;
     rectY = 250;
-    sizeX =100;
-    sizeY = 100;
-    posX =375;
+    sizeX = 400;
+    sizeY = 400;
+    posX = 375;
     posY = 275;
     rectWidth = 100;
     rectHeight = 100;
+  }
 
-    }
-    public void display(){
-
-    //DO NOT PUT DISPLAY System.out.println(cooking);
+  public void display() {
     c.background(64);
-        c.imageMode(c.CENTER);
+    c.imageMode(c.CENTER);
 
-    //add knife image
-    //Swap between two things
-    //plate
     c.fill(255, 0, 0);
-    //x,y
 
-
-  c.rect(300,200, 250,150);
-    //  c.fill(0, 55, 0);
-  //  c.rect(300,300, 30, 30);
-  //c.mouseX > rectX && c.mouseX < rectX + rectWidth && c.mouseY > rectY && c.mouseY < rectY + rectHeight
-      if (c.mouseX > 300 && c.mouseX < 300+ 200 && c.mouseY > 200 && c.mouseY < 200 + 125)
-       {
-         c.delay(2500);
-     cooking = true;
+    // p.imageMode(p.CENTER);
+c.image(backgroundOven,300,300);
+  c.rect(300, 200, 250, 150);
+    if (c.mouseX > 300 && c.mouseX < 300 + 200 && c.mouseY > 200 && c.mouseY < 200 + 125) {
+    //  c.delay(2500);
+      cooking = 1;
     }
 
-
-    if(cooking && !fried){
-//c.delay(2000);
-      c.image(uncookedTofu, 375,275, sizeX, sizeY);
-  //    c.image(uncookedTofu, c.mouseX, c.mouseY, 1, 1);
-  //c.delay(2000);
-
-cooking = false;
-fried = true;
-sizeX = 1;
-sizeY =1;
-//    c.image(cookedTofu, 375, 375,100,100);
-  }
-
-  if(!cooking && !fried){
-
-      c.image(uncookedTofu, c.mouseX, c.mouseY,100,100);
-
-  }
-  if(!cooking && fried){
-
-    c.image(uncookedTofu, c.mouseX, c.mouseY,1,1);
-
-   c.image(cookedTofu, c.mouseX, c.mouseY,100,100);
-  }
-  if(cooking && fried){
-
-  //  c.image(uncookedTofu, c.mouseX, c.mouseY,1,1);
-
-   c.image(cookedTofu, c.mouseX, c.mouseY,100,100);
-  }
-      //  fill(255, 0, 0);
+    if (cooking == 1 && fried == 0) {
+      c.image(uncookedTofu, 375, 275, sizeX, sizeY);
+      cooking = 0;
+      fried = 1;
+      sizeX = 1;
+      sizeY = 1;
+    } else if (cooking == 0 && fried == 0) {
+      c.image(uncookedTofu, c.mouseX, c.mouseY, 400, 400);
+    } else if (cooking == 0 && fried == 1) {
+      c.image(uncookedTofu, c.mouseX, c.mouseY, 1, 1);
+      c.image(cookedTofu, c.mouseX, c.mouseY, 400, 400);
+    } else if (cooking == 1 && fried == 1) {
+      c.image(cookedTofu, c.mouseX, c.mouseY, 400, 400);
     }
-  public void handleKeyPressed(){
+  }
 
-    }
+  public void handleKeyPressed() {
 
+  }
+  public static void main(String[] args) {
+  PApplet.main("Game");
+}
 
 }

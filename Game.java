@@ -10,8 +10,9 @@ public class Game extends PApplet{
   private ArrayList<Scene> scenes;
   private int current = 0;
     public void settings(){
-        size(600, 600);
-        //size(800,800);
+        //size(width, height);
+  //      size(1500,850);
+    size(600,600);
     }
 
     public void setup(){
@@ -40,9 +41,10 @@ public class Game extends PApplet{
 
 
 
-    public static void main(String[] args){
-        PApplet.main("Game");
-    }
+    public static void main(String[] args) {
+    PApplet.main("Game");
+  }
+
 
     //private ArrayList<Veggie> veggies;
 }
