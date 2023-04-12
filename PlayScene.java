@@ -8,24 +8,21 @@ public class PlayScene implements Scene {
   private int posX;
   private int posY;
   private int rectWidth;
+  private PImage background;
+  private PImage textBox;
+  private PImage PressSpace;
   private int rectHeight;
-  private PImage uncookedTofu;
-  private PImage cookedTofu;
-  private PImage backgroundOven;
-  private int cooking;
-  private int fried;
   private PApplet c;
 
   public PlayScene(PApplet c) {
-    cookedTofu = c.loadImage("cookedTofu.png");
-    uncookedTofu = c.loadImage("uncookedTofu.png");
-    backgroundOven = c.loadImage("background.png");
+    background = c.loadImage("background.png");
+    textBox = c.loadImage("textBox.png");
+    PressSpace = c.loadImage("PressSpace.png");
     this.c = c;
   }
 
 
   public void setup() {
-    cooking = 0;
     rectX = 250;
     rectY = 250;
     sizeX = 400;
@@ -36,38 +33,35 @@ public class PlayScene implements Scene {
     rectHeight = 100;
   }
 
+
   public void display() {
     c.background(64);
-    c.imageMode(c.CENTER);
+
+
 
     c.fill(255, 0, 0);
+c.image(background, 0,0,1400,800);
+c.image(textBox,0,0);
+  c.rect(655, 600, 340, 90);
+    if (c.mouseX > 655 && c.mouseX < 655 + 600 &&
+     c.mouseY > 600 && c.mouseY < 600 + 90) {
+//current++;
 
-    // p.imageMode(p.CENTER);
-c.image(backgroundOven,300,300);
-  c.rect(300, 200, 250, 150);
-    if (c.mouseX > 300 && c.mouseX < 300 + 200 && c.mouseY > 200 && c.mouseY < 200 + 125) {
-    //  c.delay(2500);
-      cooking = 1;
+    c.fill(0, 255, 0);
+        c.rect(655, 600, 340, 90);
+      //  c.image(textBox,0,0);
+      c.image(PressSpace,0,0);
     }
 
-    if (cooking == 1 && fried == 0) {
-      c.image(uncookedTofu, 375, 275, sizeX, sizeY);
-      cooking = 0;
-      fried = 1;
-      sizeX = 1;
-      sizeY = 1;
-    } else if (cooking == 0 && fried == 0) {
-      c.image(uncookedTofu, c.mouseX, c.mouseY, 400, 400);
-    } else if (cooking == 0 && fried == 1) {
-      c.image(uncookedTofu, c.mouseX, c.mouseY, 1, 1);
-      c.image(cookedTofu, c.mouseX, c.mouseY, 400, 400);
-    } else if (cooking == 1 && fried == 1) {
-      c.image(cookedTofu, c.mouseX, c.mouseY, 400, 400);
-    }
-  }
+}
+public void handleKeyPressed() {
 
-  public void handleKeyPressed() {
+}
+public void handleMousePressed() {
 
+}
+public int getCurrent() {
+      return ((Game)c).getCurrent();
   }
   public static void main(String[] args) {
   PApplet.main("Game");
