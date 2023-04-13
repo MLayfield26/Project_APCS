@@ -15,6 +15,7 @@ public class PlayScene implements Scene {
   private PApplet c;
 
   public PlayScene(PApplet c) {
+
     background = c.loadImage("background.png");
     textBox = c.loadImage("textBox.png");
     PressSpace = c.loadImage("PressSpace.png");
@@ -36,7 +37,7 @@ public class PlayScene implements Scene {
 
   public void display() {
     c.background(64);
-
+    c.imageMode(c.CORNER);
 
 
     c.fill(255, 0, 0);

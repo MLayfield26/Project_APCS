@@ -4,16 +4,16 @@ import processing.core.*;
 
 
 
-public class Scene3A implements Scene{
+public class Scene5A implements Scene{
 
   private PApplet p;
-      private PImage Display3A;
-      private PImage uncookedTofu;
+   private PImage Display5A;
 
         private int current;
-    public Scene3A(PApplet p){
-Display3A = p.loadImage("Display3A.png");
- uncookedTofu = p.loadImage("uncookedTofu.png");
+    public Scene5A(PApplet p){
+    
+Display5A = p.loadImage("Display5A.png");
+
         this.p = p;
              this.current = current;
 
@@ -23,8 +23,10 @@ Display3A = p.loadImage("Display3A.png");
 
     }
     public void display(){
-p.image(Display3A,0,0,1400,800);
-p.image(uncookedTofu, 940, 365, 100, 100);
+        p.imageMode(p.CORNER);
+      p.image(Display5A,0,0);
+
+
 
     }
     public int getCurrent() {
