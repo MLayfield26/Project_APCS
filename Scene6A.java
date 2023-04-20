@@ -24,9 +24,12 @@ knifePointer = p.loadImage("knife.png");
 
     }
     public void display(){
-   p.image(Display6A,0,0,1400,800);
-p.cursor(knifePointer);
-
+   p.image(Display6A,0,0,1400,850);
+     p.imageMode(p.CENTER);
+    p.image(knifePointer,p.mouseX,p.mouseY,150,150);
+      p.imageMode(p.CORNER);
+//p.cursor(HAND);
+p.noCursor();
 
     }
     public int getCurrent() {

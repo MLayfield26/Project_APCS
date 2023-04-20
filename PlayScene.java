@@ -1,5 +1,5 @@
 import processing.core.*;
-
+//import processing.sound.*;
 public class PlayScene implements Scene {
   private int rectX;
   private int rectY;
@@ -41,17 +41,17 @@ public class PlayScene implements Scene {
 
 
     c.fill(255, 0, 0);
-c.image(background, 0,0,1400,800);
-c.image(textBox,0,0);
-  c.rect(655, 600, 340, 90);
+    c.image(background, 0,0,1400,800);
+    c.image(textBox,0,0);
+    c.rect(655, 600, 340, 90);
     if (c.mouseX > 655 && c.mouseX < 655 + 600 &&
      c.mouseY > 600 && c.mouseY < 600 + 90) {
 //current++;
 
-    c.fill(0, 255, 0);
+        c.fill(0, 255, 0);
         c.rect(655, 600, 340, 90);
       //  c.image(textBox,0,0);
-      c.image(PressSpace,0,0);
+        c.image(PressSpace,0,0);
     }
 
 }
@@ -62,9 +62,9 @@ public void handleMousePressed() {
 
 }
 public int getCurrent() {
-      return ((Game)c).getCurrent();
-  }
-  public static void main(String[] args) {
+  return ((Game)c).getCurrent();
+}
+public static void main(String[] args) {
   PApplet.main("Game");
 }
 

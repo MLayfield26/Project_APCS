@@ -11,7 +11,7 @@ public class Scene5A implements Scene{
 
         private int current;
     public Scene5A(PApplet p){
-    
+
 Display5A = p.loadImage("Display5A.png");
 
         this.p = p;
@@ -24,7 +24,7 @@ Display5A = p.loadImage("Display5A.png");
     }
     public void display(){
         p.imageMode(p.CORNER);
-      p.image(Display5A,0,0);
+      p.image(Display5A,0,0,1400,850);
 
 
 
