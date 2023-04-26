@@ -4,22 +4,18 @@ import processing.core.*;
 
 
 
-public class Scene9A implements Scene{
+public class Scene18B implements Scene{
 
-  private PApplet p;
    private PImage dicedTofu;
- private PImage Display9A;
- private PImage pan;
-
-
+  private PApplet p;
+   private PImage Display18B, pan;
+ private PImage D3Bb;
         private int current;
-    public Scene9A(PApplet p){
+    public Scene18B(PApplet p){
       dicedTofu = p.loadImage("dicedTofu.png");
-Display9A = p.loadImage("Display9A.png");
+Display18B = p.loadImage("Display18B.png");
+D3Bb = p.loadImage("D3Bb.png");
 pan = p.loadImage("pan.png");
-
-
-
         this.p = p;
              this.current = current;
 
@@ -29,15 +25,14 @@ pan = p.loadImage("pan.png");
 
     }
     public void display(){
+        p.imageMode(p.CORNER);
 
-p.noCursor();
+      p.image(Display18B,0,0,1400,800);
+      p.image(pan,490,255,320,200);
+      p.image(dicedTofu,75,305,200,200);
+    //   p.image(D3Bb,p.mouseX,p.mouseY,40,65);
 
-       p.image(Display9A,0,0,1400,800);
-         p.image(dicedTofu,75,305,200,200);
-          p.imageMode(p.CENTER);
-          p.image(pan,p.mouseX,p.mouseY,320,200);
-   p.imageMode(p.CORNER);
-   p.cursor();
+
 
     }
     public int getCurrent() {
