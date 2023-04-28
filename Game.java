@@ -7,15 +7,15 @@ import java.util.*;
 public class Game extends PApplet {
 
  SoundFile background1;
- SoundFile click;
+ SoundFile click,drawer;
  SoundFile knife;
  SoundFile fridgeRunning;
-  PImage knifePointer,dicedTofu,backButton;
+ PImage knifePointer,dicedTofu,backButton;
  PImage imgZ1,imgZ2,imgZ3,imgZ4,imgZ5,
  imgZ6,imgZ7,imgZ8,imgZ9,imgZ10;
- PImage D1Ba,D1Bb,D1Bc,D1Bd;
+ PImage D1Ba,D1Bb,D1Bc,D1Bd,pan;
  PImage D2Ba,D2Bb,D2Bc;
- PImage D3Ba,D3Bb;
+ PImage D3Ba,D3Bb,Display21A;
 PImage sprinkle,skipSeasoning,addSeasoning;
 
  //alt sprites
@@ -28,6 +28,7 @@ PImage sprinkle,skipSeasoning,addSeasoning;
   private int seasoningB = 0;
   private int seasoningC = 0;
   private int sprinkleCounter = 0;
+  private int tofuCounter = 0;
   private int slideshow;
   public void settings() {
     // size(width, height);
@@ -41,6 +42,9 @@ PImage sprinkle,skipSeasoning,addSeasoning;
     sprinkle = loadImage("sprinkle.png");
     skipSeasoning = loadImage("skipSeasoning.png");
     addSeasoning = loadImage("addSeasoning.png");
+    dicedTofu = loadImage("dicedTofu.png");
+    Display21A = loadImage("display20A.png");
+    pan = loadImage("pan.png");
     dicedTofu = loadImage("dicedTofu.png");
     backButton = loadImage("backButton.png");
     imgZ1 = loadImage("Z1.png");
@@ -85,6 +89,7 @@ PImage sprinkle,skipSeasoning,addSeasoning;
 //click.amp(1/2);
 fridgeRunning = new SoundFile(this,"fridge.wav");
    click = new SoundFile(this, "click.wav");
+  drawer = new SoundFile(this, "drawer.mp3");
    background1.loop();
 //  buttonPressed = loadImage("ButtonPressed.png");
     scenes = new ArrayList<Scene>();
@@ -181,6 +186,7 @@ if(getCurrent() == 31){
  int seasoningC = 0;
  int sprinkleCounter = 0;
  int slideshow = 0;
+  int tofuCounter = 0;
 }
 if(getCurrent() == 23){
 
@@ -227,7 +233,7 @@ current = 21;
     if(mouseX > 955 && mouseX < 955 + 230 &&
      mouseY > 110 && mouseY < 110 + 500) {
    if (getCurrent() == 3) {
-
+        fridgeRunning.play();
      current = 4;
   //ellipse(995, 415, 40, 40);
    }
@@ -236,9 +242,8 @@ current = 21;
     if (mouseX > 985 && mouseX < 985 + 40 &&
         mouseY > 410 && mouseY < 410 + 40) {
       if (getCurrent() == 4) {
-        fridgeRunning.play();
-        fridgeRunning.play();
-        fridgeRunning.play();
+
+
         current = 5;
         // ellipse(985, 410, 40, 40);
       }
@@ -367,7 +372,7 @@ if(getCurrent() == 17){
 
     if(mouseX > 815 && mouseX < 815 + 150 &&
     mouseY > 605 && mouseY < 605 + 75) {
-
+drawer.play();
       //rect(815,605,150,75);
       current = 18;
 
@@ -378,6 +383,7 @@ if(getCurrent() == 12){
 if(mouseX > 825 && mouseX < 825 + 35 &&
 mouseY > 515. && mouseY < 515 + 65) {
 seasoningA = 1;
+
 //p.rect(825,515,35,65);
 current = 13;
 
@@ -409,6 +415,7 @@ if(getCurrent() == 12){
 
 if(mouseX > 903 && mouseX < 903 + 25 &&
 mouseY > 515. && mouseY < 515 + 65) {
+drawer.play();
 seasoningA = 3;
 //p.rect(903,515,25,65);
 current = 15;
@@ -454,7 +461,12 @@ mouseY > 305 && mouseY < 305 + 100) {
 
 }
 }
-
+if(getCurrent() == 28){
+  if(mouseX > 535 && mouseX < 535+ 200 &&
+  mouseY > 305 && mouseY < 305 + 100) {
+  tofuCounter +=1;
+}
+}
 
 
     scenes.get(current).handleMousePressed();
@@ -537,7 +549,8 @@ if(getCurrent() == 26){
   image(D3Bb,875,345,40,65);
   }
 }
-if(getCurrent() == 27){
+if(getCurrent() == 27 || getCurrent() == 28 && tofuCounter == 0){
+
   if(seasoningA ==1){
       image(D1Ba,mouseX,mouseY,40,65);
   }
@@ -568,7 +581,10 @@ if(getCurrent() == 27){
       image(D3Bb,mouseX+75,mouseY+25,40,65);
   }
 }
-if(getCurrent() == 28){
+if(getCurrent() == 28 && tofuCounter == 1){
+      image(Display21A,0,0,1400,800);
+      image(pan,490,255,320,200);
+       image(dicedTofu,75,305,200,200);
   if(seasoningA ==1){
       image(D1Ba2,mouseX,mouseY,65,40);
   }
@@ -694,7 +710,7 @@ if(getCurrent() == 24){
   imageMode(CORNER);
   cursor();
   if(mouseX > 900 && mouseX < 900 + 55&&
-  mouseY > 335 && mouseY < 335 + 75) {
+  mouseY > 310 && mouseY < 310 + 100) {
   current = 26;
 }
 
@@ -711,7 +727,7 @@ if(getCurrent() == 25){
   imageMode(CORNER);
   cursor();
   if(mouseX > 900 && mouseX < 900 + 55&&
-  mouseY > 335 && mouseY < 335 + 75) {
+  mouseY > 310 && mouseY < 310 + 100) {
   current = 26;
 }
 
@@ -721,6 +737,7 @@ if(getCurrent() == 21){
   if(mouseX > 950 && mouseX < 950 + 100&&
   mouseY > 300 && mouseY < 300 + 100) {
   current = 18;
+  drawer.play();
 }
   imageMode(CENTER);
   noCursor();

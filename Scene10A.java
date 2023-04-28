@@ -26,7 +26,7 @@ pan = p.loadImage("pan.png");
     }
     public void display(){
         p.imageMode(p.CORNER);
-
+   p.cursor();
       p.image(Display10A,0,0,1400,800);
       p.image(pan,490,255,320,200);
       p.image(dicedTofu,75,305,200,200);

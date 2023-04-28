@@ -35,9 +35,10 @@ p.noCursor();
        p.image(Display9A,0,0,1400,800);
          p.image(dicedTofu,75,305,200,200);
           p.imageMode(p.CENTER);
+          p.noCursor();
           p.image(pan,p.mouseX,p.mouseY,320,200);
    p.imageMode(p.CORNER);
-   p.cursor();
+
 
     }
     public int getCurrent() {
